@@ -27,7 +27,7 @@
 
 
 ## Models
-Babysitter 
+#### Babysitter 
 - has_many :appointments
 - has_many :children, through: :appointments
 - has_many :reviews, through: :appointments
@@ -40,7 +40,7 @@ Babysitter
 - :hourly_rate
 
 
-Appointment
+#### Appointment
 - has_many :appointment_childern
 - has_many :children, through: :appointment_children 
 - has_one :review
@@ -51,24 +51,24 @@ Appointment
 - :number_of_children?
 - :appointment_cost
 
-Appointment_Children
+#### Appointment_Children
 - belongs_to :appointments
 - belongs_to :children
 
-Child
+#### Child
 - has_many :appointment_children
 - has_many :appointments, through: :appointment_children
 - has_many :babysitters, through: :appointments 
 - belongs_to :parent 
 
 
-Parent
+#### Parent
 - has_many :children
 - has_many :reviews
 - has_many :appointments, through: :children
 - has_many :babysitters, through: :appointments
 
-Review
+#### Review
 - belongs_to :parent 
 - belongs_to :appointment 
 
