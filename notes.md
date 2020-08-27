@@ -31,7 +31,6 @@
 - has_many :appointments
 - has_many :children, through: :appointments
 - has_many :reviews, through: :appointments
--------------------------------------------------------
 - :name
 - :username
 - :phone_number
@@ -44,22 +43,28 @@
 - has_many :appointment_childern
 - has_many :children, through: :appointment_children 
 - has_one :review
---------------------------------------------------------
 - :date
 - :start_time
 - :end_time
 - :number_of_children?
 - :appointment_cost
+- :completed?
+- :babysitter_id
 
 #### Appointment_Children
 - belongs_to :appointments
 - belongs_to :children
+- appointment_id
+- child_id
 
 #### Child
 - has_many :appointment_children
 - has_many :appointments, through: :appointment_children
 - has_many :babysitters, through: :appointments 
 - belongs_to :parent 
+- :name
+- :age
+- :parent_id
 
 
 #### Parent
@@ -67,22 +72,37 @@
 - has_many :reviews
 - has_many :appointments, through: :children
 - has_many :babysitters, through: :appointments
+- :name
+- :username
+- :email
+- :password_digest
+
 
 #### Review
 - belongs_to :parent 
 - belongs_to :appointment 
+- rating (scale of: 1-5)
+- comments
+- parent_id
+- appointment_id
 
-
-- has_many :reviews, through: :appointments 
-    *** Properties ***
+#### Admin
 - :name
-- :email
 - :username
 - :password_digest
-- :rate per/hr * # of children
-- :experience
+- :email
 
+## User Story
+The babysitting app will Parents and babybsitters to schedule and track babysitting appointment through the app.  Each babysitter will be able to sign up, post a suggetst rate per child and provide information to the app that is relevant to the parents.  
 
-- belongs_to :babysitter
-- :date 
-- :time
+Each parent will be able to sign up and signup their children, make babysitting appointments, and review those appointments through the app.  There children will be registered and they will be able to track there appointmens and their babysitters for those appointments 
+
+Each child will be watched by a babysitter for the appointed time.  
+
+Each admin will be able to access accounts through the website and review site wide statistics and overall user outcomes.  
+
+## Action Items
+
+1.  Create rails app utilizing: 
+    ``` rails new babysitter_app ```
+2.  
