@@ -1,0 +1,2 @@
+class AppointmentChild < ApplicationRecord
+end

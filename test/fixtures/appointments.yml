@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-08-26
+  start_time: 2020-08-26 22:54:09
+  end_time: 2020-08-26 22:54:09
+  number_of_children: 1
+  appointment_cost: 9.99
+  completed: false
+  babysitter_id: false
+
+two:
+  date: 2020-08-26
+  start_time: 2020-08-26 22:54:09
+  end_time: 2020-08-26 22:54:09
+  number_of_children: 1
+  appointment_cost: 9.99
+  completed: false
+  babysitter_id: false

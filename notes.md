@@ -118,7 +118,8 @@ Each admin will be able to access accounts through the website and review site w
     5. Appointment
     6. Appointment_children 
     7. Review 
-
+5.  Gem files to install
+    1. Bcypt to allow for has_secure_password
 
 
 
