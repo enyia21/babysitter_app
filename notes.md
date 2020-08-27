@@ -103,6 +103,22 @@ Each admin will be able to access accounts through the website and review site w
 
 ## Action Items
 
-1.  Create rails app utilizing: 
+1.  Create rails app utilizing:  
     ``` rails new babysitter_app ```
-2.  
+2.  Create a new repository on git hub
+3.  Add a git repository 
+``` git remote add origin git@github.com:enyia21/babysitter_app.git```
+``` git branch -M master ```
+``` git push -u origin master ```
+4.  Generate Resources (Models)
+    1. Admin
+    2. Parent
+    3. Child
+    4. Babysitter 
+    5. Appointment
+    6. Appointment_children 
+    7. Review 
+
+
+
+
