@@ -31,7 +31,8 @@
 - has_many :appointments
 - has_many :children, through: :appointments
 - has_many :reviews, through: :appointments
-- :name
+- :first_name
+- :last_name
 - :username
 - :phone_number
 - :email
@@ -62,7 +63,8 @@
 - has_many :appointments, through: :appointment_children
 - has_many :babysitters, through: :appointments 
 - belongs_to :parent 
-- :name
+- :first_name
+- :last_name
 - :age
 - :parent_id
 
@@ -72,7 +74,9 @@
 - has_many :reviews
 - has_many :appointments, through: :children
 - has_many :babysitters, through: :appointments
-- :name
+- :first_name
+- :last_name
+- *** :address ***
 - :username
 - :email
 - :password_digest
@@ -87,7 +91,8 @@
 - appointment_id
 
 #### Admin
-- :name
+- :first_name
+- :last_name
 - :username
 - :password_digest
 - :email
@@ -111,7 +116,7 @@ Each admin will be able to access accounts through the website and review site w
 ``` git branch -M master ```
 ``` git push -u origin master ```
 4.  Generate Resources (Models)
-    1. Admin
+    1. Admin ```rails generate model Admin...```
     2. Parent
     3. Child
     4. Babysitter 
@@ -119,7 +124,11 @@ Each admin will be able to access accounts through the website and review site w
     6. Appointment_children 
     7. Review 
 5.  Gem files to install
-    1. Bcypt to allow for has_secure_password
+    1. Bcypt - allow for has_secure_password
+    2. faker - allows for fake data to be generated to seed the database and test its connections
+6. Generate Seed Data
+    1.  Install 'faker' gem
+    2.  Code out fake date for parents, children, appointments, admins, etc.  
 
 
 

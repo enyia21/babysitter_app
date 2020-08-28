@@ -1,4 +1,4 @@
 class AppointmentChild < ApplicationRecord
-    belongs_to :appointments
-    belongs_to :children
+    belongs_to :appointment
+    belongs_to :child
 end

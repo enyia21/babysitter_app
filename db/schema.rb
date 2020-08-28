@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_124343) do
+ActiveRecord::Schema.define(version: 2020_08_27_225104) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "name"
     t.string "username"
     t.string "password_digest"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "appointment_children", force: :cascade do |t|
@@ -29,42 +30,46 @@ ActiveRecord::Schema.define(version: 2020_08_27_124343) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.date "date"
-    t.time "start_time"
-    t.time "end_time"
     t.integer "number_of_children"
     t.decimal "appointment_cost"
     t.boolean "completed"
     t.boolean "babysitter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "babysitters", force: :cascade do |t|
-    t.string "name"
     t.string "username"
     t.integer "phone_number"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "children", force: :cascade do |t|
-    t.string "name"
     t.integer "age"
     t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "parents", force: :cascade do |t|
-    t.string "name"
     t.string "username"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "phone_number"
   end
 
   create_table "reviews", force: :cascade do |t|
