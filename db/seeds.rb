@@ -79,7 +79,12 @@ end
         # add children to the appointment
         parent.children.each do |child|
             child.appointments << new_appointment
+            if !new_appointment.review.present? 
+                rating = rand(1...6)
+                comment = Faker::Lorem.paragraph(sentence_count: rand(4..7))
+                new_review = Review.create(rating: rating, comment: comment, parent_id: parent.id, appointment_id: new_appointment.id)
+            end
         end
-
+        
     end
 end

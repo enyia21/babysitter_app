@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_225104) do
+ActiveRecord::Schema.define(version: 2020_08_28_152016) do
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_225104) do
     t.integer "number_of_children"
     t.decimal "appointment_cost"
     t.boolean "completed"
-    t.boolean "babysitter_id"
+    t.integer "babysitter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "date"
