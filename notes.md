@@ -129,6 +129,19 @@ Each admin will be able to access accounts through the website and review site w
 6. Generate Seed Data
     1.  Install 'faker' gem
     2.  Code out fake date for parents, children, appointments, admins, etc.  
+7. Build Routes Starting with Signup Page
+    1.  Welcome page
+8. Login and OmniAuth
+    Sessions Page
+    1.  I have created multiple models representing different types of users.  To account for this i need to add mulple symbols to session data to allow for proper login to occur.  There should be a symbol :user_type and :user_id.   This should allow the user to regulate whether the user has the authority to access the portion of the page they are attempting to.
+    
+9. Models Page
+    1.  Parents
+        a. Index should list off all parents and allow the administrator to delete the parents and all children from the database
+        b. show page should list all Parent information and have links to the edit page and the make an appointment page.  It should also have a link to adding a child. and editing a child **Nested Route required to edit children**
+        c.  Edit page should allow you to edit parent information
+        d.  new page should allow a parent to create a new account
+        
 
 
 

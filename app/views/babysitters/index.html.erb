@@ -1,0 +1,47 @@
+<h1>Babysitters</h1>
+<table>
+    <thead>
+        <tr>
+            <th colspan="5"</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>
+        <strong> Name </strong>
+    </td>
+    <td>
+        <strong> Phone Number </strong>
+    </td>
+    <td>
+        <strong> Email </strong>
+    </td>
+    <td>
+        <strong> Ratings </strong>
+    </td>
+
+    <td>
+        <strong> Reivews </strong>
+    </td>
+    </tr>
+    <% @babysitters.all.each do |babysitter| %>
+    <tr>
+    <td>
+        <%= babysitter.full_name%>
+    </td>
+    <td>
+        <%= babysitter.phone_number %>
+    </td>
+    <td>
+        <%= babysitter.email %>
+    </td>
+    <td>
+        <%= babysitter.ratings %>
+    </td>
+    <td>
+        Baysitter.reviews link
+    </td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>

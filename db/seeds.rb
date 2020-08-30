@@ -32,7 +32,7 @@ end
         username: sitter_userName,
         email: Faker::Internet.safe_email(name: sitter_lastName),
         password: 'password',
-        phone_number: Faker::PhoneNumber.cell_phone
+        phone_number: Faker::Number.number(digits: 10)
     )
     # create parent 
     parent_firstName = Faker::Name.first_name
@@ -45,7 +45,7 @@ end
         username: parent_userName,
         email: Faker::Internet.safe_email(name: parent_lastName),
         password: 'password',
-        phone_number: Faker::PhoneNumber.cell_phone
+        phone_number: Faker::Number.number(digits: 10)
     )
     #create child(ren)
     number_of_children = rand(1..4)
@@ -78,13 +78,17 @@ end
         )
         # add children to the appointment
         parent.children.each do |child|
-            child.appointments << new_appointment
             if !new_appointment.review.present? 
                 rating = rand(1...6)
                 comment = Faker::Lorem.paragraph(sentence_count: rand(4..7))
                 new_review = Review.create(rating: rating, comment: comment, parent_id: parent.id, appointment_id: new_appointment.id)
+                new_appointment.review = new_review
+                # binding.pry
             end
+            child.appointments << new_appointment
+            # binding.pry
         end
+
         
     end
 end
