@@ -1,2 +1,50 @@
 module SessionsHelper
+    def valid_type?(user_input)
+        types = ["Admin", "Parent", "Babysitter"]
+        types.include?(user_input)
+    end
+
+    def find_admin(user_name)
+        Admin.find_by(username: user_name)
+    end
+
+    def find_parent(user_name)
+        Parent.find_by(username: user_name)
+    end
+
+    def find_babysitter(user_name)
+        Babysitter.find_by(username: user_name)
+    end
+    
+    def find_user(user_type, user_name)
+        if valid_type?(user_type)
+            # binding.pry
+            case user_type
+            when "Admin"
+                find_admin(user_name)
+            when "Parent"
+                find_parent(user_name)
+            when "Babysitter"
+                find_babysitter(user_name)
+            else
+                nil
+            end
+        else
+            nil
+        end
+    end
+    
+    def choose_path(user_type, user)
+        case user_type
+        when "Admin"
+            binding.pry
+            redirect_to admin_path(user)
+        when "Parent"
+            redirect_to parent_path(user)
+        when "Babysitter"
+            redirect_to babysitter_path(user)
+        else
+            nil
+        end
+    end
 end

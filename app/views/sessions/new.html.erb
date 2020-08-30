@@ -1,12 +1,13 @@
 <div>
-<%= form_with url: signin_path do |f|%>
+<%= form_tag signin_path do %>
 
-<%= f.label :username%>
-<%= f.text_field :username %>
+<%= label_tag :username%><br>
+<%= text_field_tag :username %><br><br>
 
-<%= f.label :password%>
-<%= f.text_field :password %>
+<%= label_tag :password%><br>
+<%= text_field_tag :password %><br><br>
 
-<%= f.submit %>
+<%= select_tag "user_type", raw("<option>Admin</option><option>Parent</option><option>Babysitter</option>") %><br><br>
+<%= submit_tag "Log In" %>
 <% end %>
 </div>

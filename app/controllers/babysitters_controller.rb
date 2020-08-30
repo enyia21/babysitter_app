@@ -5,6 +5,7 @@ class BabysittersController < ApplicationController
     end
 
     def create 
+        binding.pry
         @babysitter = Babysitter.new(sitter_params)
 
     end

@@ -3,6 +3,9 @@ class AdminsController < ApplicationController
         @admin = Admin.new
     end
 
+    def show
+    end
+
     def create
         # @admin = Admin.create(admin_params)
     end

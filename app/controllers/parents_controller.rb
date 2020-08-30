@@ -17,5 +17,9 @@ class ParentsController < ApplicationController
     def update 
     end
 
+    def show
+        @parent = Parent.find_by(id: params[:id])
+    end
+
     
 end
