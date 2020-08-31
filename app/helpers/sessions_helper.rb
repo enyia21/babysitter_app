@@ -37,14 +37,14 @@ module SessionsHelper
     def choose_path(user_type, user)
         case user_type
         when "Admin"
-            binding.pry
-            redirect_to admin_path(user)
+            redirect_to admin_path(user) and return
         when "Parent"
-            redirect_to parent_path(user)
+            redirect_to parent_path(user) and return
         when "Babysitter"
-            redirect_to babysitter_path(user)
+            redirect_to babysitter_path(user) and return
         else
             nil
         end
     end
+
 end

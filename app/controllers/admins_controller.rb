@@ -4,6 +4,8 @@ class AdminsController < ApplicationController
     end
 
     def show
+        @admin = Admin.find_by(id: params[:id])
+        binding.pry
     end
 
     def create

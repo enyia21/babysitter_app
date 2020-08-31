@@ -4,10 +4,19 @@ Rails.application.routes.draw do
   # Home route links to the root of the server
   root to: 'welcome#homepage'
 
+  get '/auth/github/callback', to: "sessions#omniauth"
+  post '/signin/omniauth', to: "sessions#omniauth_create"
+
+  get '/auth/facebook/callback', to: "sessions#omniauth"
+  post '/signin/omniauth', to: "sessions#omniauth_create"
+
   get '/signin', to: "sessions#new"
   post '/signin', to: "sessions#create"
   post '/signout', to: "sessions#destroy"
-  resources :admin
+
+
+
+  resources :admins
   resources :babysitters
   resources :parents
 end

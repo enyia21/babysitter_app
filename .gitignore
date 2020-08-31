@@ -39,3 +39,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore dot-env Protects me from uploading my facebook credentials
+.env
+

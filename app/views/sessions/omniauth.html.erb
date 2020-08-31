@@ -1,0 +1,9 @@
+<h1>Welcome <%= @username %> </h1>
+<img src=<%= @pic %>>
+<h2>What type of user are you</h2>
+<%= form_tag signin_omniauth_path do %>
+<%= select_tag "user_type", raw("<option>Admin</option><option>Parent</option><option>Babysitter</option>") %><br><br>
+<%= submit_tag "Submit"%>
+<%end%>
+
+<%= link_to "Exit", signout_path, method: :post %>
