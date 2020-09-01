@@ -47,4 +47,19 @@ module SessionsHelper
         end
     end
 
+    def find_provider(auth)
+        case auth["provider"]
+        when "github"
+            binding.pry
+            uid = { guid: auth["uid"] }
+        when "facebook"
+           uid = { fuid: auth["uid"] }
+        else
+            auth.clear
+            session.clear
+            redirect_to root_path and return
+        end
+    end
+
+    
 end
