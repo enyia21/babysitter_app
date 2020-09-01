@@ -134,7 +134,7 @@ Each admin will be able to access accounts through the website and review site w
 8. Login and OmniAuth
     Sessions Page
     1.  I have created multiple models representing different types of users.  To account for this i need to add mulple symbols to session data to allow for proper login to occur.  There should be a symbol :user_type and :user_id.   This should allow the user to regulate whether the user has the authority to access the portion of the page they are attempting to.
-    
+    2. Add fuid: and guid: to ensure that unique id for each type user 
 9. Models Page
     1.  Parents
         a. Index should list off all parents and allow the administrator to delete the parents and all children from the database

@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
     end
     
     def omniauth_create
-        binding.pry
         auth = session[:auth]
         #verify that email is present or return user to home screen
         if auth["info"]["email"].nil?
