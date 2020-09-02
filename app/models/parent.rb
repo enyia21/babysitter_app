@@ -4,4 +4,14 @@ class Parent < ApplicationRecord
     has_many :appointments, through: :children
     has_many :babysitters, through: :appointments
     has_secure_password
+
+    validates :first_name, 
+              :last_name, 
+              :username, 
+              :email, presence: true
+    validates :phone_number, length: { is: 10 }
+    validates :phone_number, numericality: { only_integer: true }
+    validates :username, 
+              :email, uniqueness: true
+
 end

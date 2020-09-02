@@ -1,3 +1,76 @@
-<h1><%= "#{@parent.first_name} #{@parent.last_name}"%></h1>
+<h1><em><%= "#{@parent.first_name} #{@parent.last_name}"%></em></h1>
 
-<%= link_to "Sign Out", signout_path, method: :post%>
+<p>
+First Name: <%= @parent.first_name %>
+</p>
+
+<p>
+Last Name: <%= @parent.last_name %>
+</p>
+
+<p>
+User Name: <%= @parent.username %>
+</p>
+
+<p>
+Email: <%= @parent.email %>
+</p>
+
+<p>
+Phone Number: <%= @parent.phone_number %>
+</p>
+
+<% if children_not_entered(@parent) %>
+    <h2> Add Child </h2>
+<% else %>
+    <hr>
+    <h2> Children</h2>
+    <div>
+        <table>
+        <thead>
+        <tr>
+            <th colspan="4"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <strong>Name</strong>
+            </td>
+            <td>
+                <strong>Age</strong>
+            </td>
+            <td>
+                <strong>View History</strong>
+            </td>
+        </tr>
+        <tbody>
+        <% @parent.children.each do |child| %>
+        <tr>
+            <td>
+                <%= "#{child.first_name} #{child.last_name}" %>
+            </td>
+            <td>
+                <%= child.age%>
+            </td>
+            <td>
+                Appointments
+            </td>
+        </tr>
+
+        <% end %>
+        </tbody>
+        </table>
+        <br>
+        <h2>Add Child </h2>
+    </div>
+<% end %>
+    
+<div>
+    <br>
+    <%= link_to "Edit", edit_parent_path(@parent) %> | View Appointments
+    There should also be a link to the index page of parents<br>
+    <%= link_to "Log Out", signout_path, method: :post %><br>
+</div>
+
+

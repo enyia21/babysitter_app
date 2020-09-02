@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
                 u.last_name = full_name.last
                 u.password = "temp_password"
                 u.username ="#{full_name.last}" + "#{rand(10...30)}"
-                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last)
+                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last.downcase)
             end
             session[:user_type] =  user_type
             session[:user_id] =  @user.id
@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
                 u.last_name = full_name.last
                 u.password = "temp_password"
                 u.username ="#{full_name.last}" + "#{rand(10...30)}"
-                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last)
+                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last.downcase)
                 u.phone_number = "5555555555"
             end
             session[:user_type] =  user_type
@@ -65,7 +65,7 @@ class SessionsController < ApplicationController
                 u.last_name = full_name.last
                 u.password = "temp_password"
                 u.username ="#{full_name.last}" + "#{rand(10...30)}"
-                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last)
+                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last.downcase)
                 u.phone_number = "5555555555"
             end
             session[:user_type] =  user_type
