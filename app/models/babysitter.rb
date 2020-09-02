@@ -9,8 +9,10 @@ class Babysitter < ApplicationRecord
               :last_name, 
               :username, 
               :email, presence: true
-    validates :phone_number, lenth: { is: 10 }
+    validates :phone_number, length: { is: 10 }
     validates :phone_number, numericality: { only_integer: true }
+    validates :username, 
+              :email, uniqueness: true
     
 
 

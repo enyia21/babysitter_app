@@ -37,6 +37,7 @@ module SessionsHelper
     def choose_path(user_type, user)
         case user_type
         when "Admin"
+            
             redirect_to admin_path(user) and return
         when "Parent"
             redirect_to parent_path(user) and return

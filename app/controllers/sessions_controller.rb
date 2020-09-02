@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     include SessionsHelper
+
     def new
     end
 
@@ -42,26 +43,34 @@ class SessionsController < ApplicationController
                 u.last_name = full_name.last
                 u.password = "temp_password"
                 u.username ="#{full_name.last}" + "#{rand(10...30)}"
-                u.email = user_email ||= Faker::Internet.safe_email
+                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last)
             end
+            session[:user_type] =  user_type
+            session[:user_id] =  @user.id
         elsif user_type.include?("Parent") 
             @user = Parent.find_or_create_by(uid_hash) do |u|
                 u.first_name = full_name.first
                 u.last_name = full_name.last
                 u.password = "temp_password"
                 u.username ="#{full_name.last}" + "#{rand(10...30)}"
-                u.email = user_email ||= Faker::Internet.safe_email
+                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last)
                 u.phone_number = "5555555555"
             end
+            session[:user_type] =  user_type
+
+            session[:user_id] = @user.id 
         elsif user_type.include?("Babysitter")
             @user= Babysitter.find_or_create_by(uid_hash) do |u|
                 u.first_name = full_name.first
                 u.last_name = full_name.last
                 u.password = "temp_password"
                 u.username ="#{full_name.last}" + "#{rand(10...30)}"
-                u.email = user_email ||= Faker::Internet.safe_email
+                u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last)
                 u.phone_number = "5555555555"
             end
+            session[:user_type] =  user_type
+
+            session[:user_id] = @user.id
         else
             redirect_to root_path and return
         end

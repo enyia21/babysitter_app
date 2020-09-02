@@ -141,6 +141,9 @@ Each admin will be able to access accounts through the website and review site w
         b. show page should list all Parent information and have links to the edit page and the make an appointment page.  It should also have a link to adding a child. and editing a child **Nested Route required to edit children**
         c.  Edit page should allow you to edit parent information
         d.  new page should allow a parent to create a new account
+
+    2.  Babysitters 
+        
         
 
 

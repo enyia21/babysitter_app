@@ -1,5 +1,8 @@
 class ParentsController < ApplicationController
+    before_action :find_parent, only: [:edit, :update, :show]
+
     def index
+        @parents =  Parent.all
     end
 
     def new
@@ -11,15 +14,50 @@ class ParentsController < ApplicationController
     end
 
     def edit
-        @parent = Parent.find_by(id: params[:id])
     end
 
     def update 
+        @parent.update(parent_params)
+        if @parent.save
+            redirect_to parent_path(@parent)
+        else 
+            render "edit"
+        end
     end
 
     def show
-        @parent = Parent.find_by(id: params[:id])
     end
 
+    private 
+
+    def parent_params
+        params.require(:parent).permit(
+            :first_name,
+            :last_name,
+            :username,
+            :password,
+            :password_confirmation,
+            :email,
+            :phone_number
+        )
+    end
     
+    def isAdmin?
+        if session[:user_type] == "Admin"
+            true
+        else
+            false
+        end
+    end 
+
+    def find_parent
+        @parent = Parent.find_by(id: params[:id])
+        if (current_user == @parent) || isAdmin?
+            @parent 
+        elsif logged_in? 
+            direct_to_users_show_page
+        else
+            redirect_to root_path and return
+        end
+    end
 end

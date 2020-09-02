@@ -21,7 +21,7 @@ Phone Number: <%= @babysitter.phone_number %>
 </p>
 
 <div>
-    this should link to the edit page <br>
+    <%= link_to "Edit", edit_babysitter_path(@babysitter) %> | View Appointments
     There should also be a link to the index page of babysitters<br>
-    there should be an option to return home<br>
+    <%= link_to "Log Out", signout_path, method: :post %><br>
 </div>

@@ -1,2 +1,4 @@
 <h1>Edit <%= "#{@babysitter.first_name}  #{@babysitter.last_name}" %></h1>
 <%= render "sitter_form" %>
+<br>
+<%= link_to "Back", babysitter_path(@babysitter) %>
