@@ -18,5 +18,11 @@ Rails.application.routes.draw do
 
   resources :admins
   resources :babysitters
-  resources :parents
+
+  resources :parents do 
+    resources :children
+  end
+
+  resources :appointments
+  
 end

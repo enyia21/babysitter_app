@@ -18,7 +18,6 @@ module SessionsHelper
     
     def find_user(user_type, user_name)
         if valid_type?(user_type)
-            # binding.pry
             case user_type
             when "Admin"
                 find_admin(user_name)
@@ -51,7 +50,6 @@ module SessionsHelper
     def find_provider(auth)
         case auth["provider"]
         when "github"
-            binding.pry
             uid = { guid: auth["uid"] }
         when "facebook"
            uid = { fuid: auth["uid"] }

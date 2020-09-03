@@ -1,0 +1,65 @@
+<h2><%= get_full_name(@child) %></h2>
+<div>
+<p>Age: <%= @child.age %></p>
+
+<p>
+Babysitting Events
+</p>
+<% if never_been_babysat(@child) %>
+    <h2> Add a New Babysitting Appointment </h2>
+<% else %>
+    <hr>
+    <h2> Appointments</h2>
+    <div>
+        <table>
+        <thead>
+        <tr>
+            <th colspan="5"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <strong>Babysitter Name</strong>
+            </td>
+            <td>
+                <strong>Date</strong>
+            </td>
+            <td>
+                <strong>Start Time</strong>
+            </td>
+            <td>
+                <strong>End Time</strong>
+            </td>
+            <td>
+                <strong>Review</strong>
+            </td>
+        </tr>
+        <tbody>
+        <% @child.appointments.each do |appointment| %>
+        <tr>
+            <td>
+                <%= link_to "#{appointment.babysitter.full_name}", babysitter_path(appointment.babysitter) %>
+            </td>
+            <td>
+                <%= appointment.date %>
+            </td>
+            <td>
+                <%= appointment.start_time %>
+            </td>
+            <td>
+                <%= appointment.end_time %>
+            </td>
+            <td>
+                Review
+            </td>
+        </tr>
+        <% end %>
+        </tbody>
+        </table>
+        <br>
+        <h2>Make Appointment </h2>
+    </div>
+<% end %>
+
+<%= link_to "Home", parent_path(@parent) %>

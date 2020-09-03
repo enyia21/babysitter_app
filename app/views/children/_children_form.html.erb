@@ -1,0 +1,17 @@
+<%= form_with model: @child, url: parent_children_path do |f| %>
+
+<%= f.hidden_field :parent_id %>
+
+<%= f.label :first_name %><br>
+<%= f.text_field :first_name %><br><br>
+
+<%= f.label :last_name %><br>
+<%= f.text_field :last_name %><br><br>
+
+<%= f.label :age %><br>
+<%= f.text_field :age %><br><br>
+
+<%= f.submit %>
+<% end %>
+<br>
+<%= link_to "Return to #{@child.parent.first_name}'s Home", parent_path(@child.parent) %>

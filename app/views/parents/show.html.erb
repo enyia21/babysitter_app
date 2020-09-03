@@ -21,7 +21,7 @@ Phone Number: <%= @parent.phone_number %>
 </p>
 
 <% if children_not_entered(@parent) %>
-    <h2> Add Child </h2>
+    <h2> <%= link_to "Add Child", new_parent_child_path(@parent)%> </h2>
 <% else %>
     <hr>
     <h2> Children</h2>
@@ -48,7 +48,7 @@ Phone Number: <%= @parent.phone_number %>
         <% @parent.children.each do |child| %>
         <tr>
             <td>
-                <%= "#{child.first_name} #{child.last_name}" %>
+                <%= link_to "#{child.first_name} #{child.last_name}", parent_child_path(@parent, child) %>
             </td>
             <td>
                 <%= child.age%>
@@ -62,7 +62,7 @@ Phone Number: <%= @parent.phone_number %>
         </tbody>
         </table>
         <br>
-        <h2>Add Child </h2>
+        <h2><%= link_to "Add Child", new_parent_child_path(@parent) %> </h2>
     </div>
 <% end %>
     
