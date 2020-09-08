@@ -1,0 +1,28 @@
+<div align="center">
+<p>
+    First Name: <%= @admin.first_name %>
+</p>
+<p>
+    Last Name: <%= @admin.last_name %>
+</p>
+<p>
+    User Name: <%= @admin.username %>
+</p>
+<p>
+    Email Name: <%= @admin.email %>
+</p>
+    <%= link_to "View Parents", parents_path %>
+</p>
+<p>
+    <%= link_to "View Babysitters", babysitters_path %>
+</p>
+
+<p>
+    <%= link_to "Log Out", signout_path, method: :post %>
+</p>
+
+<p>
+    <%= link_to "Delete Admin", admin_path(@admin), method: :delete %>
+</p>
+</div>
+

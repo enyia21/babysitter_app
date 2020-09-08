@@ -1,0 +1,99 @@
+    <h2> Appointments</h2>
+    <div>
+        <table>
+        <thead>
+        <tr>
+            <th colspan="6"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <% if babysitter_logged_in? %>
+                <td>
+                    <strong>Parent Name</strong>
+                </td>
+            <% else%>
+                <td>
+                    <strong>Babysitter Name</strong>
+                </td>
+            <% end %>
+            <td>
+                <strong>Appointment Number</strong>
+            </td>
+            <td>
+                <strong>Start Time</strong>
+            </td>
+            <td>
+                <strong>End Time</strong>
+            </td>
+            <td>
+                <strong>Children Watched</strong>
+            </td>
+            <td>
+                <strong>Cost</strong>
+            </td>
+            <td>
+                <strong>Completed</strong>
+            </td>
+            <td>
+                <strong>Review</strong>
+            </td>
+        </tr>
+        <tbody>
+        <% @appointments.each_with_index do |appointment, index| %>
+        <tr>
+            <% if babysitter_logged_in? %>
+            <td>
+                <%= link_to parent_full_name(appointment), parent_path(get_parent(appointment)) %>
+            </td>
+            <% else %>
+            <td>
+                <%= link_to "#{appointment.babysitter.full_name}", babysitter_path(appointment.babysitter) %>
+            </td>
+            <% end %>
+            <% if babysitter_logged_in? %>
+            <td>
+                <%= link_to (index+1), babysitter_appointment_path(appointment.babysitter, appointment) %>
+            </td>
+            <% else %>
+            <td>
+                <%= link_to (index+1), parent_appointment_path(get_parent(appointment), appointment) %>
+            </td>
+            <% end %>
+            <td>
+                <%= appointment.start_time %>
+            </td>
+            <td>
+                <%= appointment.end_time %>
+            </td>
+            <td align="center">
+                <%= appointment.number_of_children%>
+            </td>
+            <td align="center">
+                <%= appointment.appointment_cost%>
+            </td>
+            <% if babysitter_logged_in? %>
+            <td align="center">
+                <%= appointment.completed%>
+            </td>
+            <% elsif appointment.completed %>
+            <td align="center">
+                <%= appointment.completed%>
+            </td>
+            <% else %> 
+            <td align="center">
+                <%= link_to "Mark Complete or Edit", edit_parent_appointment_path(@parent, @appointment) %>
+            </td>                        
+            <% end %>
+            <td>
+                Review
+            </td>
+        </tr>
+        <% end %>
+        </tbody>
+        </table>
+        <br>
+        <p>
+             <%= appointment_home_link %>
+        </p>
+    </div>

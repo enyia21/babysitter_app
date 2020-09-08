@@ -5,20 +5,16 @@ class ChildrenController < ApplicationController
     end
 
     def show
-        binding.pry
         valid_child(@parent)
     end
 
     def new
-        binding.pry
         @child = Child.new(parent_id: params[:parent_id])
     end
 
     def create
-        binding.pry
         @child = Child.new(child_parent_params)
         if @child.save
-            binding.pry
             redirect_to parent_child_path(@child.parent, @child)
         else
             render "edit"
@@ -28,13 +24,24 @@ class ChildrenController < ApplicationController
 
     def edit
         valid_child(@parent)
-        binding.pry
     end
 
     def update
         valid_child(@parent)
+        @child.update(child_parent_params)
+        if @child.save
+            redirect_to parent_child_path(@parent, @child)
+        else
+            render "edit"
+        end
     end
-    
+
+    def destroy
+        valid_child(@parent)
+        @child.destroy
+        redirect_to parent_path(@parent)
+    end
+
     private
 
     def child_parent_params

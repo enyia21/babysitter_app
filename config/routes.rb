@@ -22,7 +22,22 @@ Rails.application.routes.draw do
   resources :parents do 
     resources :children
   end
+  
+  resources :parents do 
+    resources :appointments
+  end
 
-  resources :appointments
+  resources :parents do
+    resources :reviews 
+  end
+  
+  resources :babysitters do
+    resources :reviews, only: [:index, :show]
+  end
+
+  resources :babysitters do 
+    resources :appointments, only: [:index, :show]
+  end
+
   
 end

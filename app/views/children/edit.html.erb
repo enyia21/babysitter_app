@@ -1,2 +1,2 @@
 <h1><%= "#{@child.first_name} #{@child.last_name}"%></h1>
-<%= render "children_form" %>
+<%= render partial: "children_form", locals: {edit_route: parent_child_path} %>

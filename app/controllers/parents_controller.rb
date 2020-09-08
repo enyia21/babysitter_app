@@ -2,7 +2,14 @@ class ParentsController < ApplicationController
     before_action :find_parent, only: [:edit, :update, :show]
 
     def index
-        @parents =  Parent.all
+        if logged_in? && isAdmin?
+            @parents =  Parent.all
+        elsif logged_in?
+            direct_to_users_show_page
+        else
+            redirect_to root_path
+        end
+
     end
 
     def new
@@ -13,7 +20,7 @@ class ParentsController < ApplicationController
         @parent = Parent.new(parent_params)
         if @parent.save
             session[:user_id] = @parent.id
-            session[:user_type] = "parent"
+            session[:user_type] = "Parent"
             redirect_to parent_path(@parent)
         else
             render "new"
@@ -49,13 +56,7 @@ class ParentsController < ApplicationController
         )
     end
     
-    def isAdmin?
-        if session[:user_type] == "Admin"
-            true
-        else
-            false
-        end
-    end 
+ 
 
     def find_parent
         @parent = Parent.find_by(id: params[:id])

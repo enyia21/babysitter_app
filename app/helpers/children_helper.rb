@@ -4,7 +4,6 @@ module ChildrenHelper
     end
 
     def get_full_name(user)
-        binding.pry
         "#{user.first_name} #{user.last_name}"
     end
 

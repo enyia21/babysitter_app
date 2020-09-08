@@ -6,7 +6,7 @@
 Babysitting Events
 </p>
 <% if never_been_babysat(@child) %>
-    <h2> Add a New Babysitting Appointment </h2>
+    <h2><%= link_to "Make First Appointment", new_parent_appointment_path %></h2>
 <% else %>
     <hr>
     <h2> Appointments</h2>
@@ -58,8 +58,9 @@ Babysitting Events
         </tbody>
         </table>
         <br>
-        <h2>Make Appointment </h2>
+        <h2><%= link_to "Make Appointment", new_parent_appointment_path %> </h2>
     </div>
 <% end %>
-
-<%= link_to "Home", parent_path(@parent) %>
+<%= link_to "Edit", edit_parent_child_path(@parent, @child) %> | 
+<%= link_to "Home", parent_path(@parent) %> |
+<%= link_to "Remove Child", parent_child_path(@parent, @child), method: :delete %>

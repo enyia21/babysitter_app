@@ -1,0 +1,58 @@
+<h2>Parents</h2>
+
+<table>
+<thead>
+<tr><th colspan="5"></th></tr>
+</thead>
+<tbody>
+<tr>
+    <td>
+        <strong>Name</strong>
+    </td>
+    <td>
+        <strong>Phone Number</strong>
+    </td>
+    <td>
+        <strong>Email</strong>
+    </td>
+    <td>
+        <strong>User Name</strong>
+    </td>
+    <td>
+        <strong>Appointments</strong>
+    </td>
+    <td>
+        <strong>Reviews</strong>
+    </td>
+</tr>
+</tbody>
+<% @parents.each do |parent| %>
+<tr>
+    <td>
+        <strong><%= link_to parent.full_name, parent_path(parent) %></strong>
+    </td>
+    <td>
+        <strong><%= parent.phone_number %></strong>
+    </td>
+    <td>
+        <strong><%= parent.email %></strong>
+    </td>
+    <td>
+        <strong><%= parent.username %></strong>
+    </td>
+    <td>
+        <strong><%= link_to "#{parent.appointments.count}", parent_appointments_path(parent) %></strong>
+    </td>
+    <td>
+        <strong><%= link_to "#{parent.reviews.count}", parent_reviews_path(parent) %></strong>
+    </td>    
+</tr>
+<% end %>
+
+</table>
+
+<div>
+    <p>
+    <%= parent_home_link %>
+    </p>
+</div>

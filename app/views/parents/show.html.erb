@@ -68,8 +68,7 @@ Phone Number: <%= @parent.phone_number %>
     
 <div>
     <br>
-    <%= link_to "Edit", edit_parent_path(@parent) %> | View Appointments
-    There should also be a link to the index page of parents<br>
+    <%= link_to "Edit", edit_parent_path(@parent) %> | <%= link_to "View Appointments", parent_appointments_path(@parent) %><br>
     <%= link_to "Log Out", signout_path, method: :post %><br>
 </div>
 

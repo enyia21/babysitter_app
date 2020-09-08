@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        !!current_user 
+        current_user.present?
     end
 
     def direct_to_users_show_page
@@ -30,5 +30,25 @@ class ApplicationController < ActionController::Base
                 nil
             end
         end
+    end
+
+    def isAdmin?
+        if session[:user_type] == "Admin"
+            true
+        else
+            false
+        end
+    end 
+
+    def user_role
+        session[:user_type]
+    end
+
+    def permitted_parent_or_admin
+        session[:user_type].include?("Parent") || isAdmin?
+    end
+
+    def permitted_babysitter_or_admin
+        session[:user_type].include?("Babysitter") || isAdmin?
     end
 end

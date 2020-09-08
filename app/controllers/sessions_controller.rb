@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         type_of_user = session_params[:user_type]
         username = session_params[:username]
         if find_user(type_of_user, username).nil?
-            flash[:notice] = "Invalid User Name"
+            # flash[:notice] = "Invalid User Name"
             render "new"
         else 
             user = find_user(type_of_user, username)
@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
                 session[:user_type] = type_of_user
                 session[:user_id] = user.id
                 choose_path(type_of_user, user)
+            else
+                render "new"
             end
         end
     end
@@ -37,8 +39,10 @@ class SessionsController < ApplicationController
         user_email = auth["info"]["email"]
         full_name = auth["info"]["name"].split
         user_type = session_params[:user_type]
+        binding.pry
         if user_type.include?("Admin") 
             @user = Admin.find_or_create_by(uid_hash) do |u|
+
                 u.first_name = full_name.first
                 u.last_name = full_name.last
                 u.password = "temp_password"
@@ -64,7 +68,7 @@ class SessionsController < ApplicationController
                 u.first_name = full_name.first
                 u.last_name = full_name.last
                 u.password = "temp_password"
-                u.username ="#{full_name.last}" + "#{rand(10...30)}"
+                u.username ="#{full_name.last}" + "#{rand(10...67)}"
                 u.email = user_email ||= Faker::Internet.safe_email(name: full_name.last.downcase)
                 u.phone_number = "5555555555"
             end

@@ -2,8 +2,13 @@ class BabysittersController < ApplicationController
     before_action :find_babysitter, only: [:edit, :update, :show]
 
     def index
-        @babysitters = Babysitter.all
-
+        if logged_in? && isAdmin?
+            @babysitters = Babysitter.all
+        elsif logged_in?
+            direct_to_users_show_page
+        else
+            redirect_to root_path
+        end
     end
     #user wants to create a babysitter the follow the rails
     #new route to babysitter.new after they reach it the are passed to a forme
@@ -19,7 +24,7 @@ class BabysittersController < ApplicationController
         @babysitter = Babysitter.new(sitter_params)
         if @babysitter.save
             session[:user_id] = @babysitter.id
-            session[:user_type] = "babysitter"
+            session[:user_type] = "Babysitter"
             redirect_to babysitter_path(@babysitter)
         else
             render "new"
