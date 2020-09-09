@@ -20,6 +20,13 @@ module AppointmentsHelper
         end
     end
 
+    
+    def parent_has_provided_review(appointment)
+        appointment.review.present?
+    end
+
+
+
     def parent_full_name(appointment)
         parent = get_parent(appointment)
         parent.full_name
@@ -31,5 +38,13 @@ module AppointmentsHelper
 
     def babysitter_logged_in?
         @babysitter.present?
+    end
+
+    def create_or_find_review(appointment)
+        if appointment.review.present?
+            link_to "Review", parent_appointment_review_path(@parent, appointment, appointment.review)
+        else 
+            link_to  "Create Review", new_parent_appointment_review_path(@parent, appointment)
+        end
     end
 end

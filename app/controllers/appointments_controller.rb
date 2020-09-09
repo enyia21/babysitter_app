@@ -17,7 +17,6 @@ class AppointmentsController < ApplicationController
         @appointment[:number_of_children] = number_of_children
         cost = @appointment.calculate_appointment_cost
         @appointment[:appointment_cost] = cost
-        binding.pry
         if @appointment.save
             redirect_to parent_appointment_path(@parent, @appointment)
         else
@@ -29,7 +28,6 @@ class AppointmentsController < ApplicationController
     end
 
     def update
-        binding.pry
         @appointment.update(appointment_params)
         if @appointment.save
             redirect_to parent_appointment_path(@parent, @appointment)

@@ -8,6 +8,9 @@ class Appointment < ApplicationRecord
    validates :number_of_children, numericality: {only_integer: true, greater_than: 0 }
    validate :babysitting_cannot_start_before_it_ends
 
+   scope :babysitter_appointments, -> (babysitter) {where("babysitter_id LIKE ?", babysitter)}
+   scope :recent_first, -> { order(:start_time, :desc) }
+    
    def babysitting_cannot_start_before_it_ends
       if self.start_time > self.end_time
          errors.add(:start_time, "Start can't be after ending")
@@ -18,7 +21,6 @@ class Appointment < ApplicationRecord
    COST_PER_HOUR_PER_CHILD = 4.5
 
    def hours_watched
-      binding.pry
       ((self.end_time - self.start_time)/3600).round(2) 
    end
 

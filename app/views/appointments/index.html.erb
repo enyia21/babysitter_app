@@ -85,9 +85,26 @@
                 <%= link_to "Mark Complete or Edit", edit_parent_appointment_path(@parent, @appointment) %>
             </td>                        
             <% end %>
+
+            <% if babysitter_logged_in? %>
             <td>
-                Review
+                <% if appointment.review.present?%>
+                    <%= link_to  "View Review", babysitter_appointment_review_path(appointment.babysitter, appointment, appointment.review) %>
+                <% else %>
+                    <%= "No Review" %>
+                <% end %>
             </td>
+            <% else %>
+                <% if appointment.review.present? %>
+                    <td>
+                        <%= link_to  "View Review", parent_appointment_review_path(appointment.children.first.parent, appointment, appointment.review) %>
+                    </td>
+                <% else %>
+                    <td>
+                        <%= link_to  "Create Review", new_parent_appointment_review_path(appointment.children.first.parent, appointment) %>
+                    </td>
+                <%end%>
+            <% end %>
         </tr>
         <% end %>
         </tbody>

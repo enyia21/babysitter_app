@@ -1,0 +1,29 @@
+<div align="center">
+<h2>Review of: <%= @appointment.babysitter.full_name %></h2>
+<p>
+Date: <%= appointment_date %>
+</p>
+<p>
+Parent Name: <%= @appointment.children.first.parent.full_name %>
+</p>
+<p>
+Babysitter Arrival: <%= @appointment.start_time %>
+</p>
+<p>
+Babysitter Departure: <%= @appointment.end_time %>
+</p>
+<p>
+Rating: <%= @appointment.review.rating %>
+</p>
+<p>
+Comment: <%= @appointment.review.comment %>
+</p>
+</div>
+
+<p>
+    <%= review_home_link %> 
+    <% if @parent.present? %>
+    | <%= link_to "Edit Review", edit_parent_appointment_review_path(@parent, @appointment, @review) %>
+    | <%= link_to "Delete Review", parent_appointment_review_path(@parent, @appointment, @review), method: :delete %>
+    <% end %>
+</p>

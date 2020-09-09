@@ -19,6 +19,17 @@
     <%= link_to "Appointment Complete? ", edit_parent_appointment_path(@parent, @appointment) %>
 <% end %>
 
+<br>
+
+<% if parent_has_provided_review(@appointment) && parent_logged_in?%>
+    <%= link_to "Review", parent_appointment_review_path(@parent, @appointment.review) %> 
+<% elsif parent_logged_in? %>
+    <%= link_to "Write Review", new_parent_appointment_review_path(@parent, @appointment) %>
+<% elsif parent_has_provided_review(@appointment) && babysitter_logged_in? %>
+    <%= link_to "Review", babysitter_appointment_review_path(@babysitter,@appointment, @appointment.review) %>
+<% else %>
+    <%= "Waiting for a Review"%>
+<%end%>
 <p>
 <%= appointment_home_link %> | <%= appointment_edit_link(@parent, @appointment)%>
 </p>

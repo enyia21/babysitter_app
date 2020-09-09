@@ -35,10 +35,10 @@
         <%= babysitter.email %>
     </td>
     <td>
-        <%= babysitter.ratings %>
+        <%= rating_ave(babysitter) %>
     </td>
     <td>
-        Baysitter.reviews link
+        <%= link_to "Reviews", babysitter_reviews_path(babysitter) %>
     </td>
     </tr>
     <% end %>

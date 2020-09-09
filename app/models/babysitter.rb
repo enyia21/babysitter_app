@@ -25,5 +25,4 @@ class Babysitter < ApplicationRecord
     def ratings_present?
         self.reviews.present?
     end
-
 end

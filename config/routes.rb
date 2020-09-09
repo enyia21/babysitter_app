@@ -17,27 +17,43 @@ Rails.application.routes.draw do
 
 
   resources :admins
+  
   resources :babysitters
-
+ 
+  #------------ Children ----------------
   resources :parents do 
     resources :children
   end
   
+  # --------- Parent Appointments and Babysitter Appointments ----------
   resources :parents do 
     resources :appointments
   end
-
-  resources :parents do
-    resources :reviews 
-  end
   
-  resources :babysitters do
-    resources :reviews, only: [:index, :show]
-  end
-
   resources :babysitters do 
     resources :appointments, only: [:index, :show]
   end
 
+
+  # ----------------- Parent and Babysitter Reviews ---------------------
+  resources :parents do
+    resources :reviews, only: :index
+  end
+  
+  resources :parents do
+    resources :appointments do
+      resources :reviews, except: [:index]
+    end
+  end
+  
+  resources :babysitters do
+    resources :reviews, only: :index
+  end
+
+  resources :babysitters do 
+    resources :appointments do 
+      resources :reviews, only: :show
+    end
+  end
   
 end

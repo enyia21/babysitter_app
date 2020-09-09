@@ -2,6 +2,7 @@ class AdminsController < ApplicationController
     before_action :find_admin, only: [:edit, :update, :show, :destroy]
     def new
         @admin = Admin.new
+        
     end
 
     def show
@@ -14,6 +15,8 @@ class AdminsController < ApplicationController
             session[:user_type] = "Admin"
             redirect_to admin_path(@admin)
         else
+            
+            flash[:notice] = @admin.errors.full_messages.first
             render "new"
         end
     end
@@ -25,7 +28,7 @@ class AdminsController < ApplicationController
     end
 
     def destroy
-        binding.pry
+        
         @admin.destroy
         redirect_to root_path
     end

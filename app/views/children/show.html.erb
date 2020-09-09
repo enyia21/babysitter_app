@@ -51,7 +51,7 @@ Babysitting Events
                 <%= appointment.end_time %>
             </td>
             <td>
-                Review
+                <%= create_or_find_review(appointment) %>
             </td>
         </tr>
         <% end %>

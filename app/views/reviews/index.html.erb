@@ -1,0 +1,77 @@
+ <h2> Appointments</h2>
+    <div align="center">
+        <table>
+        <thead>
+        <tr>
+            <th colspan="6"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <% if !babysitter_logged_in? %>
+            <td>
+                <strong>Review Number</strong>
+            </td>
+            <td>
+                <strong>Rating</strong>
+            </td>
+            <td>
+                <strong>Comment</strong>
+            </td>
+        <% else %>
+            <td>
+                <strong>Appointment Number</strong>
+            </td>
+            <td>
+                <strong>Kids Watched</strong>
+            </td>
+            <td>
+                <strong>Amount Paid</strong>
+            </td>
+            <td>
+                <strong>Appointment Time</strong>
+            </td>
+            <td>
+                <strong>Completed?</strong>
+            </td>
+        <% end %> 
+        </tr>
+        <tbody>
+        <% find_reviews_by_user.each do |appointment| %>
+        <tr>
+            <% if !babysitter_logged_in? %>
+            <td>
+                <%= appointment.id %>  
+            </td> 
+            <td>
+                <%= appointment.rating %>  
+            </td>    
+            <td>
+                <%= appointment.comment %>
+            </td>
+            <% else %>             
+            <td>
+                <%= appointment.id %>
+            </td>
+            <td>
+                <%= appointment.number_of_children %>
+            </td>
+            <td>
+                <%= appointment.appointment_cost %>
+            </td>
+            <td>
+                <%= appointment.start_time %>
+            </td>
+            <td>
+                <%= appointment.completed %>
+            </td>
+            <% end %>
+        </tr>
+        <% end %>
+        </tbody>
+        </table>
+        <br>
+        <p>
+             <%= appointment_home_link %>
+        </p>
+    </div>

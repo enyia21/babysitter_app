@@ -39,7 +39,6 @@ class SessionsController < ApplicationController
         user_email = auth["info"]["email"]
         full_name = auth["info"]["name"].split
         user_type = session_params[:user_type]
-        binding.pry
         if user_type.include?("Admin") 
             @user = Admin.find_or_create_by(uid_hash) do |u|
 

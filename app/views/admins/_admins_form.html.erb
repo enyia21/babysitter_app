@@ -1,5 +1,8 @@
-<%= form_with model: @admin, url: admin_route do |f| %>
 
+<%= form_with model: @admin, url: admin_route do |f| %>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <%= f.label :first_name %><br>
 <%= f.text_field :first_name %><br><br>
 
